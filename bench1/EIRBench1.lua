@@ -55,7 +55,7 @@ mesh.MeshGenerator.Execute(meshgen)
 
 -- Set Material IDs
 vol0 = logvol.RPPLogicalVolume.Create({ xmin = 0., xmax = 8.9, ymin = 0., ymax = 8.9, infz = true })
-vol1 = logvol.RPPLogicalVolume.Create({ xmin = 1., xmax = 7.4, ymin = 1., ymax = 7.4, infz = true })
+vol1 = logvol.RPPLogicalVolume.Create({ xmin = 1.5, xmax = 7.9, ymin = 1., ymax = 7.4, infz = true })
 mesh.SetMaterialIDFromLogicalVolume(vol1, 1)
 vol2 = logvol.BooleanLogicalVolume.Create({
   parts = {{op = true, lv = vol0}, {op = false, lv= vol1}}
