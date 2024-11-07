@@ -67,8 +67,8 @@ vol = {vol0, vol2}
 materials = {}
 materials[1] = mat.AddMaterial("Water")
 materials[2] = mat.AddMaterial("Fuel")
-mat.SetProperty(materials[1], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'water.mgxs')
-mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'fuel.mgxs')
+mat.SetProperty(materials[1], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'Water.xs')
+mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'Fuel.xs')
 
 -- Set up physics
 num_g, num_m = 2, 0
