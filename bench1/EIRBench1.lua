@@ -54,16 +54,22 @@ meshgen = mesh.OrthogonalMeshGenerator.Create({
 
 mesh.MeshGenerator.Execute(meshgen)
 
-mesh.SetUniformMaterialID(1)
-vol0 = logvol.RPPLogicalVolume.Create({ xmin = minX + w1 , xmax = minX + w1 + w2 , ymin = minY + h1 , ymax = minY + h1 + h2 , infz = true })
-mesh.SetMaterialIDFromLogicalVolume(vol0, 0)
+-- Set Material IDs
+vol0 = logvol.RPPLogicalVolume.Create({ xmin = 0., xmax = 8.9, ymin = 0., ymax = 8.9, infz = true })
+mesh.SetMaterialIDFromLogicalVolume(vol0, 1)
+vol1 = logvol.RPPLogicalVolume.Create({ xmin = 1., xmax = 7.4, ymin = 1., ymax = 7.4, infz = true })
+vol2 = logvol.BooleanLogicalVolume.Create({
+  parts = {{op = true, lv = vol0}, {op = false, lv= vol1}}
+})
+mesh.SetMaterialIDFromLogicalVolume(vol2, 0)
+vol = {vol0, vol2}
 
 materials = {}
-materials[1] = mat.AddMaterial("Fuel")
-materials[2] = mat.AddMaterial("Water")
+materials[2] = mat.AddMaterial("Fuel")
+materials[1] = mat.AddMaterial("Water")
 
-mat.SetProperty(materials[1], TRANSPORT_XSECTIONS, OPENSN_XSFILE, "Fuel.xs")
-mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, "Water.xs")
+mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, "Fuel.xs")
+mat.SetProperty(materials[1], TRANSPORT_XSECTIONS, OPENSN_XSFILE, "Water.xs")
 
 num_groups = 2
 src1 = { 1 , 0 }
