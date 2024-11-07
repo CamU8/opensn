@@ -17,9 +17,8 @@
 namespace opensn
 {
 
-WGSLinearSolver::WGSLinearSolver(std::shared_ptr<WGSContext> gs_context_ptr)
-  : LinearSolver(IterativeMethodPETScName(gs_context_ptr->groupset.iterative_method),
-                 gs_context_ptr)
+WGSLinearSolver::WGSLinearSolver(const std::shared_ptr<WGSContext>& gs_context_ptr)
+  : LinearSolver(gs_context_ptr->groupset.iterative_method, gs_context_ptr)
 {
   auto& groupset = gs_context_ptr->groupset;
   auto& solver_tol_options = this->ToleranceOptions();
@@ -168,7 +167,8 @@ WGSLinearSolver::SetRHS()
   saved_q_moments_local_ = lbs_solver.QMomentsLocal();
 
   const bool single_richardson =
-    iterative_method_ == "krylov_richardson" and tolerance_options.maximum_iterations == 1;
+    groupset.iterative_method == LinearSolver::IterativeMethod::PETSC_RICHARDSON and
+    tolerance_options.maximum_iterations == 1;
 
   if (not single_richardson)
   {
