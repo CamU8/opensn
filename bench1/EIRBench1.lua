@@ -52,7 +52,6 @@ meshgen = mesh.OrthogonalMeshGenerator.Create({
   }),
 })
 
-mesh.MeshGenerator.Execute(meshgen)
 
 -- Set Material IDs
 vol0 = logvol.RPPLogicalVolume.Create({ xmin = 0., xmax = 8.9, ymin = 0., ymax = 8.9, infz = true })
@@ -64,24 +63,12 @@ vol2 = logvol.BooleanLogicalVolume.Create({
 mesh.SetMaterialIDFromLogicalVolume(vol2, 0)
 vol = {vol0, vol2}
 
+-- Add Materials
 materials = {}
-materials[2] = mat.AddMaterial("Fuel")
 materials[1] = mat.AddMaterial("Water")
-
-mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, "Fuel.xs")
-mat.SetProperty(materials[1], TRANSPORT_XSECTIONS, OPENSN_XSFILE, "Water.xs")
-
-num_groups = 2
-src1 = { 1 , 0 }
-src2 = { 0 , 0 }
-
-mat.SetProperty(materials[1], ISOTROPIC_MG_SOURCE, FROM_ARRAY, src1)
-mat.SetProperty(materials[2], ISOTROPIC_MG_SOURCE, FROM_ARRAY, src2)
-
-nazimu = 1
-npolar = 2
-pquad = aquad.CreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV, nazimu, npolar)
-aquad.OptimizeForPolarSymmetry(pquad, 4.0 * math.pi)
+materials[2] = mat.AddMaterial("Fuel")
+mat.SetProperty(materials[1], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'water.mgxs')
+mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'fuel.mgxs')
 
 -- Set up physics
 num_g, num_m = 2, 0
