@@ -40,7 +40,7 @@ for i = 1, (n_cells + 1) do
 end
 
 midX = (w1 + w2 + w3 - minX) / 2
-midY = (h1 + hw + h3 - minY) / 2
+midY = (h1 + h2 + h3 - minY) / 2
 
 meshgen = mesh.OrthogonalMeshGenerator.Create({
   node_sets = { nodesX, nodesY },
