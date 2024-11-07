@@ -51,7 +51,7 @@ meshgen = mesh.OrthogonalMeshGenerator.Create({
     ycuts = { midY },
   }),
 })
-
+mesh.MeshGenerator.Execute(meshgen1)
 
 -- Set Material IDs
 vol0 = logvol.RPPLogicalVolume.Create({ xmin = 0., xmax = 8.9, ymin = 0., ymax = 8.9, infz = true })
