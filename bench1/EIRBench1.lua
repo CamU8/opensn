@@ -11,6 +11,7 @@ if check_num_procs == nil and number_of_processes ~= num_procs then
   os.exit(false)
 end
 
+-- test
 -- Setup the mesh
 nodesX = {}
 nodesY = {}
