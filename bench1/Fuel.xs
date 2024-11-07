@@ -23,6 +23,11 @@ NU_BEGIN
 1       1.1
 NU_END
 
+CHI_BEGIN
+0		1.0
+1       0.0
+CHI_END
+
 TRANSFER_MOMENTS_BEGIN
 #Zeroth moment (l=0)
 M_GPRIME_G_VAL 0 0 0 1.78E-1
