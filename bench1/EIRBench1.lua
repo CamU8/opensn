@@ -39,8 +39,8 @@ for i = 1, (n_cells + 1) do
   nodesY[i + 2 * n_cells] = minY + h1 + h2 + k * dy3
 end
 
-midX = (w1 + w2 + w3 - xmin) / 2
-midY = (h1 + hw + h3 - ymin) / 2
+midX = (w1 + w2 + w3 - minX) / 2
+midY = (h1 + hw + h3 - minY) / 2
 
 meshgen = mesh.OrthogonalMeshGenerator.Create({
   node_sets = { nodesX, nodesY },
