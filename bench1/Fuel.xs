@@ -19,8 +19,8 @@ NU_SIGMA_F_BEGIN
 NU_SIGMA_F_END
 
 NU_BEGIN
-0       1.1
-1       1.1
+0       2.45
+1       2.45
 NU_END
 
 CHI_BEGIN
