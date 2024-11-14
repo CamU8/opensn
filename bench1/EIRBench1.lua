@@ -15,7 +15,7 @@ end
 -- Setup the mesh
 nodesX = {}
 nodesY = {}
-n_cells = 12
+n_cells = 1
 w1 = 1.5
 w2 = 6.4
 w3 = 1
@@ -44,13 +44,7 @@ midX = (w1 + w2 + w3 - minX) / 2
 midY = (h1 + h2 + h3 - minY) / 2
 
 meshgen = mesh.OrthogonalMeshGenerator.Create({
-  node_sets = { nodesX, nodesY },
-  partitioner = mesh.KBAGraphPartitioner.Create({
-    nx = 2,
-    ny = 2,
-    xcuts = { midX },
-    ycuts = { midY },
-  }),
+  node_sets = { nodesX, nodesY }
 })
 mesh.MeshGenerator.Execute(meshgen)
 
