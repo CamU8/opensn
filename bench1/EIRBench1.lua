@@ -15,7 +15,7 @@ end
 -- Setup the mesh
 nodesX = {}
 nodesY = {}
-n_cells = 1
+n_cells = 12
 w1 = 1.5
 w2 = 6.4
 w3 = 1
