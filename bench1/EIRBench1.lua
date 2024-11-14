@@ -73,7 +73,7 @@ mat.SetProperty(materials[2], TRANSPORT_XSECTIONS, OPENSN_XSFILE, 'Fuel.xs')
 
 -- Set up physics
 num_g, num_m = 2, 0
-pquad = aquad.CreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV, 1, 4)
+pquad = aquad.CreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV, 1, 1)
 aquad.OptimizeForPolarSymmetry(pquad, 4.0 * math.pi)
 
 num_groups = 2
